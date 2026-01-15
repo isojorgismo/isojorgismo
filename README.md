@@ -1,5 +1,8 @@
 ## Hi there 👋
 
+Soy estudiante de la licenciatura en Matemáticas en la Universidad Juárez Autónoma de Tabasco.
+
+Actualmente estoy trabajando en mi tesis de grado, cuyo tema principal es la clasificación multicategórica.
 <!--
 **isojorgismo/isojorgismo** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
