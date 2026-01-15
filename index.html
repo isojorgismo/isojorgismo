@@ -7,47 +7,69 @@
 
   <style>
     body {
-      font-family: "Georgia", "Times New Roman", serif;
-      background-color: #f9f9f9;
-      color: #222;
       margin: 0;
-      padding: 0;
-      line-height: 1.7;
+      font-family: "Georgia", "Times New Roman", serif;
+      background-color: #f4f4f4;
+      color: #222;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px;
-      background-color: #ffffff;
+    /* Layout general */
+    .layout {
+      display: flex;
+      min-height: 100vh;
     }
 
-    header {
-      border-bottom: 1px solid #ddd;
+    /* Barra lateral */
+    .sidebar {
+      width: 240px;
+      background-color: #6a1bb1; /* morado */
+      color: white;
+      padding: 30px 20px;
+    }
+
+    .sidebar h1 {
+      font-size: 1.3em;
       margin-bottom: 40px;
-      padding-bottom: 20px;
+      line-height: 1.3;
     }
 
-    h1 {
-      font-size: 2.2em;
-      margin-bottom: 10px;
+    .nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 15px;
+      font-size: 1.05em;
+      padding: 6px 0;
     }
 
-    .subtitle {
-      font-size: 1.1em;
-      color: #555;
+    .nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contenido */
+    .content {
+      flex: 1;
+      background-color: white;
+      padding: 60px 70px;
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
     }
 
     h2 {
-      font-size: 1.5em;
-      margin-top: 40px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
+      font-size: 2em;
+      margin-bottom: 20px;
     }
 
     p {
-      margin-top: 15px;
+      line-height: 1.7;
       text-align: justify;
+      margin-bottom: 15px;
     }
 
     ul {
@@ -58,15 +80,6 @@
       margin-bottom: 8px;
     }
 
-    a {
-      color: #1a4ba3;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
     footer {
       margin-top: 60px;
       padding-top: 20px;
@@ -75,52 +88,89 @@
       color: #666;
       text-align: center;
     }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .content {
+        padding: 40px 25px;
+      }
+    }
   </style>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll("section");
+      sections.forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+  </script>
 </head>
 
 <body>
-  <div class="container">
+  <div class="layout">
 
-    <header>
-      <h1>Jorge Alberto Cañas Palomeque</h1>
-      <div class="subtitle">
-        Estudiante de la Licenciatura en Matemáticas<br>
-        Universidad Juárez Autónoma de Tabasco
-      </div>
-    </header>
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+      <h1>
+        Jorge Alberto<br>
+        Cañas Palomeque
+      </h1>
 
-    <section>
-      <h2>Introducción</h2>
-      <p>
-        Esta es mi página personal. Aquí presento mi trayectoria académica,
-        mis intereses de investigación y algunos proyectos relacionados con
-        el análisis estadístico y la ciencia de datos.
-      </p>
-    </section>
+      <nav class="nav">
+        <a href="#" onclick="showSection('intro')">Introducción</a>
+        <a href="#" onclick="showSection('cv')">Hoja de vida</a>
+        <a href="#" onclick="showSection('comunicacion')">Comunicación científica</a>
+      </nav>
+    </aside>
 
-    <section>
-      <h2>Intereses</h2>
-      <ul>
-        <li>Análisis de Datos Multivariados</li>
-        <li>Ciencia de Datos</li>
-        <li>Aprendizaje Estadístico</li>
-        <li>Aplicaciones en Ciencias de la Salud</li>
-      </ul>
-    </section>
+    <!-- Contenido principal -->
+    <main class="content">
 
-    <section>
-      <h2>Contacto</h2>
-      <ul>
-        <li>Correo: <a href="mailto:isojorgismo@gmail.com">isojorgismo@gmail.com</a></li>
-        <li>GitHub: <a href="https://github.com/isojorgismo">github.com/isojorgismo</a></li>
-        <li>Instagram: <a href="https://www.instagram.com/isojorgismo">@isojorgismo</a></li>
-      </ul>
-    </section>
+      <section id="intro" class="active">
+        <h2>Introducción</h2>
 
-    <footer>
-      © 2026 — Jorge Alberto Cañas Palomeque
-    </footer>
+        <p>
+          Soy estudiante de la Licenciatura en Matemáticas en la Universidad Juárez
+          Autónoma de Tabasco.
+        </p>
 
+        <p>
+          Mis intereses incluyen el análisis de datos multivariados, la ciencia de
+          datos y el aprendizaje estadístico, así como la aplicación de estas áreas
+          a problemas en las ciencias de la salud.
+        </p>
+
+        <h3>Contacto</h3>
+        <ul>
+          <li>Correo: isojorgismo@gmail.com</li>
+          <li>GitHub: https://github.com/isojorgismo</li>
+          <li>Instagram: https://www.instagram.com/isojorgismo</li>
+        </ul>
+      </section>
+
+      <section id="cv">
+        <h2>Hoja de vida</h2>
+        <p>Hola.</p>
+      </section>
+
+      <section id="comunicacion">
+        <h2>Comunicación científica</h2>
+        <p>Hola.</p>
+      </section>
+
+      <footer>
+        © 2026 — Jorge Alberto Cañas Palomeque
+      </footer>
+
+    </main>
   </div>
 </body>
 </html>
